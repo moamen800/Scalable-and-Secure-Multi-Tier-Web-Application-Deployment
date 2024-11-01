@@ -1,0 +1,21 @@
+# Ignore Terraform state files and backups
+*.tfstate            
+*.tfstate.*          
+
+# Ignore logs
+*.log               
+
+# Ignore Terraform provider plugins
+.terraform/          
+
+# Ignore sensitive variable files
+terraform.tfvars     
+
+# Ignore lock files
+.terraform.lock.hcl  
+
+# Ignore generated plan files
+*.tfplan             
+
+# Ignore documentation or notes
+Folder_Structure.txt # Structure notes file
