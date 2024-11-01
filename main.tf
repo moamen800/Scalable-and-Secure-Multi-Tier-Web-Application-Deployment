@@ -14,6 +14,7 @@ module "network" {
 # It depends on the network module to ensure that networking resources are available before deployment.
 module "presentation" {
   source = "./presentation" # Path to the presentation module directory
+  aws_region = var.aws_region
 }
 
 ####################################### Business Logic Module #######################################

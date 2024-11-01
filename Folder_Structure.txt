@@ -1,0 +1,38 @@
+multi-tier-architecture/
+│
+├── presentation/          # Frontend components (Presentation Layer)
+│   ├── s3.tf              # Configures S3 for hosting static website assets
+│   ├── cloudfront.tf      # Sets up CloudFront for content delivery network (CDN) distribution
+│   ├── cognito.tf         # Manages user authentication and authorization using AWS Cognito
+│   ├── WAF.tf             # Configures Web Application Firewall (WAF) rules to protect the app from common attacks
+│   ├── variables.tf       # Defines variables used across the presentation layer
+│   └── outputs.tf         # Exports outputs related to the presentation tier for easy access in other modules
+│
+├── business-logic/        # Backend services (Business Logic Layer)
+│   ├── api_gateway.tf     # Sets up API Gateway to manage and route HTTP requests to backend services
+│   ├── lambda.tf          # Configures AWS Lambda functions for backend processing tasks
+│   ├── roles.tf           # Manages IAM roles and permissions required for Lambda execution
+│   ├── variables.tf       # Defines variables for the backend services
+│   └── outputs.tf         # Exports outputs related to backend services for reference in other layers
+│
+├── data/                  # Database and storage (Data Layer)
+│   ├── dynamodb.tf        # Sets up DynamoDB table for persistent storage
+│   ├── variables.tf       # Defines variables related to data management and storage
+│   └── outputs.tf         # Exports outputs related to the data tier for reference in other modules
+│
+├── network/               # Network infrastructure shared across layers
+│   ├── vpc.tf             # Defines the Virtual Private Cloud (VPC) for network isolation
+│   ├── subnets.tf         # Sets up public and private subnets within the VPC for different layers
+│   ├── internet_gateway.tf # Configures Internet Gateway for enabling public access
+│   ├── nat_gateway.tf     # Sets up NAT Gateway for secure outbound traffic from private subnets
+│   ├── security_groups.tf # Defines Security Groups for access control at various levels
+│   ├── variables.tf       # Declares network-related variables used within the network module
+│   └── outputs.tf         # Exports outputs related to networking, e.g., VPC ID, subnet IDs, etc.
+│
+├── global_variables.tf    # Global variable definitions used across all modules
+├── global_outputs.tf      # Global outputs file to export shared resources
+├── providers.tf           # Defines Terraform provider configuration for AWS and other providers
+├── terraform.tfvars       # Contains variable values for configuration, e.g., region, CIDR, AMI
+├── main.tf                # Main entry point that orchestrates all layers and integrates resources
+├── README.md              # Documentation with instructions on architecture and deployment steps
+└── .gitignore             # Specifies files and folders to be ignored in version control (e.g., Terraform state files)
